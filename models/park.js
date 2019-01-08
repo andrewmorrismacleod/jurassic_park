@@ -23,4 +23,15 @@ Park.prototype.mostAttractiveDinosaur = function(){
   return mostAttractive;
 };
 
+Park.prototype.findAllBySpecies = function(species) {
+
+  let speciesSubset = [];
+  for (const dinosaur of this.dinosaurs) {
+    if (dinosaur.species === species) {
+        speciesSubset.push(dinosaur);
+    }
+  }
+  return speciesSubset;
+};
+
 module.exports = Park;
