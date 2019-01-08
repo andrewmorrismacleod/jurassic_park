@@ -56,6 +56,18 @@ describe('Park', function() {
     assert.deepStrictEqual(actual, [dinosaur1, dinosaur5]);
   });
 
-  it('should be able to remove all dinosaurs of a particular species');
+  it('should be able to remove all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur5);
+    park.removeAllBySpecies("Utahraptor");
+    const actual = park.dinosaurs;
+    assert.deepStrictEqual(actual, [dinosaur2, dinosaur3]);
+  });
+
+  it('should be able to calculate the total number of visitors in a day', function(){
+    const actual = park.totalVisitorsPerDay();
+    assert.strictEqual(actual, 1600);
+  });
+
+
 
 });

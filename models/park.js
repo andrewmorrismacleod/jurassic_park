@@ -24,14 +24,18 @@ Park.prototype.mostAttractiveDinosaur = function(){
 };
 
 Park.prototype.findAllBySpecies = function(species) {
+  return this.dinosaurs.filter(dinosaur => dinosaur.species == species);
+};
 
-  let speciesSubset = [];
-  for (const dinosaur of this.dinosaurs) {
-    if (dinosaur.species === species) {
-        speciesSubset.push(dinosaur);
-    }
-  }
-  return speciesSubset;
+Park.prototype.removeAllBySpecies = function(species) {
+  this.dinosaurs = this.dinosaurs.filter(dinosaur => dinosaur.species !== species);
+};
+
+Park.prototype.totalVisitorsPerDay = function() {
+  const totalVisitors = this.dinosaurs.reduce(function(runningTotal, dinosaur) {
+    return runningTotal + dinosaur.guestsAttractedPerDay;
+  },0);
+  return totalVisitors;
 };
 
 module.exports = Park;
