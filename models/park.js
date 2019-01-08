@@ -44,6 +44,14 @@ Park.prototype.totalVisitorsPerYear = function() {
 
 Park.prototype.totalAnnualRevenue = function() {
   return this.totalVisitorsPerYear() * this.price;
-}
+};
+
+Park.prototype.dietCounts = function() {
+  dietCounts = { 'herbivore': 0, 'carnivore': 0, 'omnivore': 0}
+  for (dinosaur of this.dinosaurs) {
+    dietCounts[dinosaur.diet] ++;
+  }
+  return dietCounts;
+};
 
 module.exports = Park;

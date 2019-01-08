@@ -9,11 +9,11 @@ describe('Park', function() {
 
   beforeEach(function () {
 
-    dinosaur1 = new Dinosaur("Utahraptor", "Carnivore", 100);
-    dinosaur2 = new Dinosaur("Stenonychosaurus", "Omnivore", 500);
-    dinosaur3 = new Dinosaur("Quetzalcoatlus", "Carnivore", 1000);
-    dinosaur4 = new Dinosaur("Supersaurus", "Herbivore", 400);
-    dinosaur5 = new Dinosaur("Utahraptor", "Carnivore", 500);
+    dinosaur1 = new Dinosaur("Utahraptor", "carnivore", 100);
+    dinosaur2 = new Dinosaur("Stenonychosaurus", "omnivore", 500);
+    dinosaur3 = new Dinosaur("Quetzalcoatlus", "carnivore", 1000);
+    dinosaur4 = new Dinosaur("Supersaurus", "herbivore", 400);
+    dinosaur5 = new Dinosaur("Utahraptor", "carnivore", 500);
     dinosaurs = [dinosaur1, dinosaur2, dinosaur3];
     park = new Park('Isla Nublar', 10, dinosaurs);
   })
@@ -78,5 +78,10 @@ describe('Park', function() {
     assert.strictEqual(actual, 1600*365*10);
   });
 
+  it('should be able to return an object containing counts of dinosaur diets', function(){
+    park.addDinosaur(dinosaur4);
+    const actual = park.dietCounts();
+    assert.deepStrictEqual(actual, {'carnivore': 2, 'herbivore': 1, 'omnivore': 1})
+  })
 
 });
